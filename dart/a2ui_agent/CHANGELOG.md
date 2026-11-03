@@ -231,6 +231,13 @@
   return `false` to decline a message. The library re-exports the agent
   function and renderer-to-agent message types from `a2ui_core`
   ([#3536](https://github.com/a2ui-project/a2ui/issues/3536), [#3861](https://github.com/a2ui-project/a2ui/pull/3861)).
+- (v1_0) Added `RendererFunctionCalls`, which calls renderer functions from
+  the agent: `call` builds the `callRendererFunction` message with a `Future`
+  for the result, and `resolve`, passed to `RendererToAgentMessageProcessor`
+  as `onRendererFunctionResponse`, settles the call and declines responses to
+  calls it doesn't track. The library also re-exports
+  `CallRendererFunctionMessage`
+  ([#3535](https://github.com/a2ui-project/a2ui/issues/3535)).
 - The v1.0 schema in the direct JSON prompt no longer says that `createSurface`
   needs later messages for its components and data. They can be sent inline in
   `createSurface` or in later `updateComponents` and `updateDataModel` messages.

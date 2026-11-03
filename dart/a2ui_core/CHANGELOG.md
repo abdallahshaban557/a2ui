@@ -139,6 +139,10 @@
   catalog functions that run on the agent, with `Catalog.agentFunctions`,
   `Catalog.rendererFunctions`, `Catalog.copyWith(agentFunctions: ...)` and
   `A2uiRpcError.custom` ([#3536](https://github.com/a2ui-project/a2ui/issues/3536), [#3861](https://github.com/a2ui-project/a2ui/pull/3861)).
+- (v1_0) Added `RpcErrorCode.tooManyPending` (`TOO_MANY_PENDING`), which
+  `a2ui_agent`'s `RendererFunctionCalls` reports when an agent has too many
+  calls to renderer functions pending
+  ([#3535](https://github.com/a2ui-project/a2ui/issues/3535)).
 - Added `MessageErrorMapper`, `SurfaceGroupModel.onError`, and
   `MessageProcessor.processMessagesWithErrors` for mapping `A2uiError`
   exceptions into structured wire-format `ErrorMessage` envelopes, and

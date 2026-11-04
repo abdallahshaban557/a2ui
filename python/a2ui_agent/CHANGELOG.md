@@ -1,5 +1,13 @@
 ## Unreleased
 
+- `RendererFunctionCalls.call` checks its arguments in a fixed order shared
+  with the TypeScript and Dart SDKs. An empty `function_call_id` is now
+  refused with `INVALID_FUNCTION_CALL` instead of replaced by a generated
+  one, and so are a `name` that isn't a UAX #31 identifier or starts with
+  `@`, and `args` that aren't a mapping with identifier keys and JSON values
+  (no NaN or infinity). `timeout` and `default_timeout` must be finite
+  positive numbers (not bools); only `default_timeout=None` turns the limit
+  off. ([#3939](https://github.com/a2ui-project/a2ui/pull/3939))
 - `RendererFunctionCalls` takes optional `catalogs`. With them, `call` raises
   `UNKNOWN_FUNCTION` for a catalog they lack or a name that isn't one of its
   renderer functions (agent functions included), and

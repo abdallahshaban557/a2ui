@@ -241,6 +241,9 @@
   Given the renderer's `catalogs`, `call` refuses a call to a function that
   isn't one of their renderer functions (`UNKNOWN_FUNCTION`), or to one that is
   `rendererOnly` or requires a user activation (`INVALID_FUNCTION_CALL`).
+  `call` checks its arguments in the same order as the Python and TypeScript
+  SDKs; `args` must have identifier keys and JSON values, and nested function
+  calls in it are left for the renderer to check.
 - The v1.0 schema in the direct JSON prompt no longer says that `createSurface`
   needs later messages for its components and data. They can be sent inline in
   `createSurface` or in later `updateComponents` and `updateDataModel` messages.

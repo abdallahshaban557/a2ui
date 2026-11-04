@@ -1,5 +1,11 @@
 ## Unreleased
 
+- `RendererFunctionCalls` takes optional `catalogs`. With them, `call` raises
+  `UNKNOWN_FUNCTION` for a function or catalog they lack, and
+  `INVALID_FUNCTION_CALL` for a `rendererOnly` function or one that requires
+  user activation, before anything is registered. Two catalogs with one ID
+  raise `A2uiCatalogError`.
+  ([#3939](https://github.com/a2ui-project/a2ui/pull/3939))
 - Add `RendererFunctionCalls` to `a2ui.rpc`, which sends v1.0
   `callRendererFunction` messages for one conversation and settles each call's
   future from the renderer's `rendererFunctionResponse`, with timeouts (30

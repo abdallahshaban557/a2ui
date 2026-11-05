@@ -2385,7 +2385,7 @@
           "required": ["functions", "agent_functions", "document_functions"],
           "additionalProperties": false
         },
-        "expect_error": {"$ref": "#/$defs/ExpectError"}
+        "expect_error": {"$ref": "#/$defs/AgentFunctionExpectError"}
       },
       "required": ["name", "action", "args"],
       "oneOf": [{"required": ["expect"]}, {"required": ["expect_error"]}],
@@ -2435,7 +2435,7 @@
           "additionalProperties": false
         },
         "expect_error": {
-          "$ref": "#/$defs/ExpectError",
+          "$ref": "#/$defs/AgentFunctionExpectError",
           "description": "Handling the message fails instead of answering it."
         }
       },
@@ -2468,7 +2468,7 @@
           "additionalProperties": false
         },
         "expect_valid": {"const": true},
-        "expect_error": {"$ref": "#/$defs/ExpectError"}
+        "expect_error": {"$ref": "#/$defs/AgentFunctionExpectError"}
       },
       "required": ["name", "action", "args"],
       "oneOf": [{"required": ["expect_valid"]}, {"required": ["expect_error"]}],
@@ -2545,12 +2545,25 @@
           "additionalProperties": false
         },
         "expect_error": {
-          "$ref": "#/$defs/ExpectError",
+          "$ref": "#/$defs/AgentFunctionExpectError",
           "description": "Building the processor or processing the message fails, and no callback runs."
         }
       },
       "required": ["name", "action", "args"],
       "oneOf": [{"required": ["expect"]}, {"required": ["expect_error"]}],
+      "additionalProperties": false
+    },
+    "AgentFunctionExpectError": {
+      "type": "object",
+      "description": "The error an agent function case expects: its category and, optionally, a literal substring of its message.",
+      "properties": {
+        "category": {"enum": ["CatalogError", "ValidationError"]},
+        "message": {
+          "type": "string",
+          "description": "A literal substring of the error's message, not a regular expression."
+        }
+      },
+      "required": ["category"],
       "additionalProperties": false
     },
     "ExpectError": {
